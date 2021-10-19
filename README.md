@@ -11,5 +11,15 @@ Spring MVC的拦截器类似于Servlet开发中的过滤器Filter，用于处理
 #### 自定义拦截器
 想要自定义拦截器，必须实现HandlerInterceptor接口。
 1. 新建一个Module，springmvc-07-Interceptor，添加web支持
-2. 配置web.xml和springmvc-servlet.xml文件
-3. 编写一个拦截器
+2. 配置web.xml和applicationContext.xml文件
+3. 编写一个拦截器MyInterceptor.java
+4. 重新部署后访问：http://localhost:8080/springmvc_07_interceptor_war_exploded/hello，此时可以看到Tomcat Server日志打印如下。
+说明了拦截器的实际执行顺序。
+```plain/text
+============== preHandle() 处理前 ==============
+TestController => hello()请求执行了
+============== postHandle() 处理后 ==============
+============== afterCompletion() 清理 ==============
+```
+* ！！！ 拓展学习AOP的3中实现方式，横切（注解，类写，实现Spring类接口来实现）。拦截器是AOP的一种实现方式，自己用AOP横切写应该也要能实现。
+PS: AOP直接横切bean的方法，interceptor这里实在controller中应用拦截请求路径
