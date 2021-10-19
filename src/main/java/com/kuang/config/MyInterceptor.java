@@ -18,15 +18,15 @@ public class MyInterceptor implements HandlerInterceptor {
      * 	 return false; 不执行下一个拦截器，甚至连后面的controller也没有执行，将卡在此处，后续操作不执行
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("============== preHandle() 处理前 ==============");
-        return true;
+        System.out.println("============== MyInterceptor.preHandle() 处理前 ==============");
+        return true; // return true后执行下一个interceptor
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("============== postHandle() 处理后 ==============");
+        System.out.println("============== MyInterceptor.postHandle() 处理后 ==============");
     }
 
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("============== afterCompletion() 清理 ==============");
+        System.out.println("============== MyInterceptor/afterCompletion() 清理 ==============");
     }
 }
