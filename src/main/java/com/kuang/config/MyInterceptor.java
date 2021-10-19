@@ -15,7 +15,7 @@ public class MyInterceptor implements HandlerInterceptor {
      * 	 * that this interceptor has already dealt with the response itself.
      *
      * 	 return true; 执行下一个拦截器（放行）
-     * 	 return false; 不执行下一个拦截器
+     * 	 return false; 不执行下一个拦截器，甚至连后面的controller也没有执行，将卡在此处，后续操作不执行
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("============== preHandle() 处理前 ==============");
